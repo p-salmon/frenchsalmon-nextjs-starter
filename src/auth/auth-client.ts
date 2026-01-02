@@ -1,0 +1,13 @@
+"use client";
+
+import { createAuthClient } from "better-auth/react";
+
+export const authClient = createAuthClient({
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? process.env.NEXT_PUBLIC_AUTH_URL ||
+        "https://oak-shelf-library.vercel.app" // Replace with your actual domain
+      : "http://localhost:3000",
+});
+
+export const { signIn, signUp, signOut, useSession, getSession } = authClient;
